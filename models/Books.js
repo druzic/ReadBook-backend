@@ -11,6 +11,7 @@ const bookSchema = new mongoose.Schema({
   isbn: {
     type: Number,
     required: true,
+    length: 13,
   },
   quantity: {
     type: Number,
