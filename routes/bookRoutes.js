@@ -5,7 +5,7 @@ const bookRoutes = express.Router();
 
 bookRoutes.post("/book/add", async (req, res) => {
   //console.log(req.body);
-  const { title, author, isbn, quantity, description, category } = req.body;
+  const { title, author, isbn, quantity, category } = req.body;
 
   try {
     let newBook = new Book({
@@ -13,7 +13,6 @@ bookRoutes.post("/book/add", async (req, res) => {
       author,
       isbn,
       quantity,
-      description,
       category,
     });
     await newBook.save();
