@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 const bookRoutes = require("../routes/bookRoutes.js");
 const authRoutes = require("../routes/authRoutes.js");
 const issuedRoutes = require("../routes/issuedRoutes.js");
+const reservationRoutes = require("../routes/reservationRoutes.js");
 
 import cors from "cors";
 
@@ -23,5 +24,6 @@ const port = 3000;
 app.use(bookRoutes);
 app.use(authRoutes);
 app.use(issuedRoutes);
+app.use(reservationRoutes);
 
 app.listen(port, () => console.log(`Slušam na portu ${port}`));

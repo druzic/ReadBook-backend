@@ -47,7 +47,7 @@ authRoutes.post("/user/login", async (req, res) => {
 });
 
 authRoutes.get("/user/login", [auth], async (req, res) => {
-  console.log(req.user);
+  // console.log(req.user);
   try {
     let users = await User.findOne({ _id: req.user }).select("-password");
     res.json(users);
@@ -102,7 +102,7 @@ authRoutes.patch("/user/update/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { doc } = req.body;
-    console.log(doc);
+    //console.log(doc);
     let user = await User.findOne({ _id: id });
     user.name = doc.name;
     user.email = doc.email;

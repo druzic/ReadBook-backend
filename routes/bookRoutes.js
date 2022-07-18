@@ -58,7 +58,7 @@ bookRoutes.patch("/book/update/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { doc } = req.body;
-    console.log(doc);
+    // console.log(doc);
     let book = await Book.findOne({ _id: id });
     book.title = doc.title;
     book.author = doc.author;
@@ -66,7 +66,7 @@ bookRoutes.patch("/book/update/:id", async (req, res) => {
     book.quantity = doc.quantity;
     book.category = doc.category;
     await book.save();
-    console.log(book);
+    // console.log(book);
     res.send(book);
   } catch (error) {
     console.log(error);

@@ -1,6 +1,7 @@
 const express = require("express");
 import Issued from "../models/Issued";
 import Book from "../models/Books";
+import Reservation from "../models/Reservations";
 
 const issuedRoutes = express.Router();
 
@@ -21,6 +22,29 @@ issuedRoutes.post("/issued/add", async (req, res) => {
         $inc: { quantity: -1 },
       }
     );
+    await newIssued.save();
+    //console.log(newIssued);
+
+    return res.status(200).json({ msg: "Done", newIssued });
+  } catch (error) {
+    res.status(400).json({ msg: "Invalid data", data: req.body });
+  }
+});
+
+issuedRoutes.post("/issued/reservation", async (req, res) => {
+  //console.log(req.body);
+  const { user, book, issuedDate, dueDate, reservationID } = req.body;
+
+  try {
+    let newIssued = new Issued({
+      user,
+      book,
+      issuedDate,
+      dueDate,
+    });
+
+    await Reservation.deleteOne({ _id: reservationID });
+
     await newIssued.save();
     //console.log(newIssued);
 
