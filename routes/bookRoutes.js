@@ -34,6 +34,15 @@ bookRoutes.get("/book", async (req, res) => {
     console.log(error);
   }
 });
+bookRoutes.get("/book/available", async (req, res) => {
+  try {
+    let books = await Book.find({ quantity: { $gt: 0 } });
+    res.send(books);
+    //console.log(books);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 bookRoutes.delete("/book/delete/:id", async (req, res) => {
   try {
