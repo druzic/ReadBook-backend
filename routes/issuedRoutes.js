@@ -91,4 +91,20 @@ issuedRoutes.patch("/issued", async (req, res) => {
   }
 });
 
+issuedRoutes.get("/issued/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    let issued = await Issued.find({ user: id, isReturned: false }).populate([
+      "user",
+      "book",
+    ]);
+    res.send(issued);
+    console.log(issued);
+    //console.log(issued);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = issuedRoutes;
