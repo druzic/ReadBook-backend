@@ -18,7 +18,7 @@ mongoose
   .catch((error) => console.log(error));
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use(express.json({ extended: false }));
 const port = 3000;
 
