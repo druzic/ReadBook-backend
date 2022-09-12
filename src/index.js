@@ -20,7 +20,7 @@ mongoose
 const app = express();
 app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use(express.json({ extended: false }));
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(bookRoutes);
 app.use(authRoutes);
