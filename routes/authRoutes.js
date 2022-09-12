@@ -1,5 +1,5 @@
-const express = require("express");
-import User from "../models/Users";
+import express from "express";
+import User from "../models/Users.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -114,4 +114,4 @@ authRoutes.patch("/user/update/:id", async (req, res) => {
   }
 });
 
-module.exports = authRoutes;
+export default authRoutes;

@@ -1,6 +1,5 @@
-const express = require("express");
-import Book from "../models/Books";
-
+import Book from "../models/Books.js";
+import express from "express";
 const bookRoutes = express.Router();
 
 bookRoutes.post("/book/add", async (req, res) => {
@@ -72,4 +71,4 @@ bookRoutes.patch("/book/update/:id", async (req, res) => {
   }
 });
 
-module.exports = bookRoutes;
+export default bookRoutes;

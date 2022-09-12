@@ -1,7 +1,7 @@
-const express = require("express");
-import Issued from "../models/Issued";
-import Book from "../models/Books";
-import Reservation from "../models/Reservations";
+import express from "express";
+import Issued from "../models/Issued.js";
+import Book from "../models/Books.js";
+import Reservation from "../models/Reservations.js";
 
 const issuedRoutes = express.Router();
 
@@ -107,4 +107,4 @@ issuedRoutes.get("/issued/:id", async (req, res) => {
   }
 });
 
-module.exports = issuedRoutes;
+export default issuedRoutes;

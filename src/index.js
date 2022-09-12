@@ -2,10 +2,11 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
-const bookRoutes = require("../routes/bookRoutes.js");
-const authRoutes = require("../routes/authRoutes.js");
-const issuedRoutes = require("../routes/issuedRoutes.js");
-const reservationRoutes = require("../routes/reservationRoutes.js");
+
+import bookRoutes from "../routes/bookRoutes.js";
+import authRoutes from "../routes/authRoutes.js";
+import issuedRoutes from "../routes/issuedRoutes.js";
+import reservationRoutes from "../routes/reservationRoutes.js";
 
 import cors from "cors";
 
