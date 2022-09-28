@@ -42,7 +42,7 @@ authRoutes.post("/user/login", async (req, res) => {
     );
   } catch (error) {
     handleErrors(error);
-    res.status(400).send(error, "user not created");
+    res.status(400).send(error, "User not created");
   }
 });
 
@@ -59,13 +59,16 @@ authRoutes.get("/user/login", [auth], async (req, res) => {
 
 authRoutes.post("/user/add", async (req, res) => {
   //console.log(req.body);
-  const { name, email, password } = req.body;
-
+  const { name, email, password, userType } = req.body;
+  let isAdmin;
+  console.log(userType);
+  if (userType == "Admin") isAdmin = true;
   try {
     let newUser = new User({
       name,
       email,
       password,
+      isAdmin,
     });
     const salt = await bcrypt.genSalt(10);
     newUser.password = await bcrypt.hash(password, salt);

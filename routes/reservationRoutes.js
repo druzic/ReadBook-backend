@@ -43,4 +43,14 @@ reservationRoutes.get("/reservation", async (req, res) => {
   }
 });
 
+reservationRoutes.delete("/reservation/delete/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    await Reservation.deleteOne({ _id: id });
+    res.status(200).json({ msg: "Reservation deleted" });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 export default reservationRoutes;

@@ -1,4 +1,7 @@
 import Book from "../models/Books.js";
+import Issued from "../models/Issued.js";
+import Reservation from "../models/Reservations.js";
+import User from "../models/Users.js";
 import express from "express";
 const bookRoutes = express.Router();
 
@@ -66,6 +69,24 @@ bookRoutes.patch("/book/update/:id", async (req, res) => {
     await book.save();
     // console.log(book);
     res.send(book);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+bookRoutes.get("/summary", async (req, res) => {
+  try {
+    let allBooks = await Book.find({});
+    let issuedBooks = await Issued.find({ isReturned: false });
+    let activeReservations = await Reservation.find({});
+    let members = await User.find({});
+    res.json({
+      allBooks: allBooks.length,
+      issuedBooks: issuedBooks.length,
+      activeReservations: activeReservations.length,
+      members: members.length,
+    });
+    //console.log(books);
   } catch (error) {
     console.log(error);
   }
